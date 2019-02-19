@@ -121,7 +121,7 @@ class _TransactionPageState extends State<TransactionPage> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text('Scrolling list\n$itemTypeText'),
+        title: Text('Transaction History'),
         actions: <Widget>[
           //  MaterialDemoDocumentationButton(ListDemo.routeName),
           IconButton(

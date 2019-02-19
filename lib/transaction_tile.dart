@@ -24,7 +24,9 @@ class _PostListItem extends State<TransationTile> {
   _PostListItem(this.transactionHistoyModel, this.previousItem);
 
   _isMatched() {
-    if (transactionHistoyModel.completed == previousItem.completed && transactionHistoyModel.transactionId.toString() != previousItem.transactionId.toString()) {
+    if (transactionHistoyModel.completed == previousItem.completed &&
+        transactionHistoyModel.transactionId.toString() !=
+            previousItem.transactionId.toString()) {
       return false;
     } else
       return true;
@@ -34,64 +36,75 @@ class _PostListItem extends State<TransationTile> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {},
-      child: Container(
-        height: 60,
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: Colors.grey,
-              width: 1.0,
-            ),
-          ),
-        ),
-        child: Column(
-          children: <Widget>[
-            _isMatched()
-                ? Expanded(
-                    child: Container(
-                      child: Text(transactionHistoyModel.completed),
-                    ),
-                  )
-                : Container(),
-                Expanded(
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            child: Text(
-                              transactionHistoyModel.transactionId.toString(),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: Container(
-                            child: Text(
-                              transactionHistoyModel.transactionState,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            child: Text(
-                              transactionHistoyModel.transactionAmount + " USD",
-                              textAlign: TextAlign.end,
-                              style: TextStyle(
-                                  fontFamily: "AbrilFatface",
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w100),
-                            ),
-                          ),
-                        ),
-                      ],
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          _isMatched()
+              ? Container(
+                  height: 40,
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[400],
+                  ),
+                  child: Text(
+                    transactionHistoyModel.completed,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
                     ),
                   ),
-          ],
-        ),
+                )
+              : Container(),
+          Container(
+            height: 60,
+            padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: Colors.grey,
+                  width: 1.0,
+                ),
+              ),
+            ),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    child: Text(
+                      transactionHistoyModel.transactionType,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    child: Text(
+                      transactionHistoyModel.transactionState,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    child: Text(
+                      transactionHistoyModel.transactionAmount + " USD",
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                          fontFamily: "AbrilFatface",
+                          fontSize: 18,
+                          fontWeight: FontWeight.w100),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
