@@ -139,7 +139,7 @@ class _PostListItem extends State<TransationTile> {
                         child: Container(
                           child: Text(
                             transactionHistoyModel.transactionState,
-                            textAlign: TextAlign.center,
+                            textAlign: TextAlign.right,
                             style: TextStyle(
                               fontFamily: "PTSerif Italic",
                               fontSize: 12,
