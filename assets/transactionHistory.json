@@ -5,12 +5,12 @@
     "transactionState": "Pending",
     "transactionMethod":"Balance",
     "transactionType":"Deposit",
-    "created": "1-1-2019",
-    "completed": "1-1-2019",
-    "cancelled": "1-1-2019",
+    "created": "1 Feb 2019",
+    "completed": "1 Feb 2019",
+    "cancelled": "1 Feb 2019",
     "primaryCurrency": "USD",
     "convertedTo": "MYR",
-    "conversationRate": "4.01"
+    "conversionRate": "4.01"
   },
   {
     "transactionId":2,
@@ -18,12 +18,12 @@
     "transactionState": "Timeout",
     "transactionMethod":"Balance",
     "transactionType":"Withdraw",
-    "created": "1-1-2019",
-    "completed": "1-1-2019",
-    "cancelled": "1-1-2019",
+    "created": "1 Feb 2019",
+    "completed": "2 Feb 2019",
+    "cancelled": "4 Feb 2019",
     "primaryCurrency": "USD",
     "convertedTo": "MYR",
-    "conversationRate": "4.01"
+    "conversionRate": "4.01"
   },
   {
     "transactionId":3,
@@ -31,12 +31,12 @@
     "transactionState": "cancelled",
     "transactionMethod": "MCASH",
     "transactionType": "Transfer",
-    "created": "1-1-2019",
-    "completed": "1-1-2019",
-    "cancelled": "1-1-2019",
+    "created": "1 Mar 2019",
+    "completed": "2 Mar 2019",
+    "cancelled": "5 Mar 2019",
     "primaryCurrency": "USD",
     "convertedTo": "MYR",
-    "conversationRate": "4.01"
+    "conversionRate": "4.01"
   },
   {
     "transactionId":4,
@@ -44,12 +44,12 @@
     "transactionState": "Failed",
     "transactionMethod":"Balance",
     "transactionType":"Charge",
-    "created": "1-1-2019",
-    "completed": "1-1-2019",
-    "cancelled": "1-1-2019",
+    "created": "1 Mar 2019",
+    "completed": "2 Mar 2019",
+    "cancelled": "6 Mar 2019",
     "primaryCurrency": "USD",
     "convertedTo": "MYR",
-    "conversationRate": "4.01"
+    "conversionRate": "4.01"
   },
   {
     "transactionId":5,
@@ -57,12 +57,12 @@
     "transactionState": "Pending Remeption", 
     "transactionMethod": "Balance",
     "transactionType": "Refund",
-    "created": "1-1-2019",
-    "completed": "1-1-2019",
-    "cancelled": "1-1-2019",
+    "created": "1 Mar 2019",
+    "completed": "2 Mar 2019",
+    "cancelled": "7 Mar 2019",
     "primaryCurrency": "USD",
     "convertedTo": "MYR",
-    "conversationRate": "4.01"
+    "conversionRate": "4.01"
   },
   {
     "transactionId":6,
@@ -70,12 +70,12 @@
     "transactionState": "Succeeded",
     "transactionMethod":"Balance",
     "transactionType": "Deposit",
-    "created": "1-1-2019",
-    "completed": "1-1-2019",
-    "cancelled": "1-1-2019",
+    "created": "1 Mar 2019",
+    "completed": "2 Mar 2019",
+    "cancelled": "17 Mar 2019",
     "primaryCurrency": "USD",
     "convertedTo": "MYR",
-    "conversationRate": "4.01"
+    "conversionRate": "4.01"
   },
   {
     "transactionId":7,
@@ -83,12 +83,12 @@
     "transactionState": "Pending", 
     "transactionMethod":"MCASH",
     "transactionType": "Withdraw",
-    "created": "1-1-2019",
-    "completed": "1-1-2019",
-    "cancelled": "1-1-2019",
+    "created": "1 Apr 2019",
+    "completed": "2 Apr 2019",
+    "cancelled": "14 Apr 2019",
     "primaryCurrency": "USD",
     "convertedTo": "MYR",
-    "conversationRate": "4.01"
+    "conversionRate": "4.01"
   },
   {
     "transactionId":8,
@@ -96,12 +96,12 @@
     "transactionState":"Timeout", 
     "transactionMethod":"MCASH",
     "transactionType": "Deposit",
-    "created": "1-1-2019",
-    "completed": "1-1-2019",
-    "cancelled": "1-1-2019",
+    "created": "1 Apr 2019",
+    "completed": "2 Apr 2019",
+    "cancelled": "15 Apr 2019",
     "primaryCurrency": "USD",
     "convertedTo": "MYR",
-    "conversationRate": "4.01"
+    "conversionRate": "4.01"
   },
   {
     "transactionId":9,
@@ -109,12 +109,12 @@
     "transactionState": "cancelled",
     "transactionMethod":"Balance",
     "transactionType": "Transfer",
-    "created": "1-1-2019",
-    "completed": "1-2-2019",
-    "cancelled": "1-1-2019",
+    "created": "1 Apr 2019",
+    "completed": "1 Apr 2019",
+    "cancelled": "1 Apr 2019",
     "primaryCurrency": "USD",
     "convertedTo": "MYR",
-    "conversationRate": "4.01"
+    "conversionRate": "4.01"
   },
   {
     "transactionId":10,
@@ -122,12 +122,12 @@
     "transactionState":"Failed", 
     "transactionMethod":"Balance",
     "transactionType": "Refund",
-    "created": "1-1-2019",
-    "completed": "1-1-2019",
-    "cancelled": "1-1-2019",
+    "created": "1 May 2019",
+    "completed": "1 May 2019",
+    "cancelled": "1 May 2019",
     "primaryCurrency": "USD",
     "convertedTo": "MYR",
-    "conversationRate": "4.01"
+    "conversionRate": "4.01"
   },
   {
     "transactionId":11,
@@ -135,11 +135,11 @@
     "transactionState":"Failed", 
     "transactionMethod":"Balance",
     "transactionType": "Refund",
-    "created": "1-1-2019",
-    "completed": "1-5-2019",
-    "cancelled": "1-1-2019",
+    "created": "1 Jun 2019",
+    "completed": "1 Jun 2019",
+    "cancelled": "1 Jun 2019",
     "primaryCurrency": "USD",
     "convertedTo": "MYR",
-    "conversationRate": "4.01"
+    "conversionRate": "4.01"
   }
 ]

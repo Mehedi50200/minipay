@@ -67,7 +67,23 @@ flutter:
         
     - family: MissFajardose
       fonts:
-        - asset: fonts/MissFajardose.ttf    
+        - asset: fonts/MissFajardose.ttf   
+
+    - family: PTSerif Bold
+      fonts:
+        - asset: fonts/PTSerifBold.ttf 
+
+    - family: PTSerif Regular
+      fonts:
+        - asset: fonts/PTSerifRegular.ttf
+
+    - family: PTSerif Italic
+      fonts:
+        - asset: fonts/PTSerifItalic.ttf
+
+    - family: PTSerif Bold Italic
+      fonts:
+        - asset: fonts/PTSerifBoldItalic.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages

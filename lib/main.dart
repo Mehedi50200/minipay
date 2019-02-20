@@ -52,7 +52,7 @@ class _TransactionPageState extends State<TransactionPage> {
           x["cancelled"],
           x["primaryCurrency"],
           x["convertedTo"],
-          x["conversationRate"]);
+          x["conversionRate"]);
       transactionList.add(transactionItem);
     }
     return transactionList;
@@ -144,6 +144,7 @@ class _TransactionPageState extends State<TransactionPage> {
               var transactionListData = snapshot.data;
               return Container(
                 height: MediaQuery.of(context).size.height-90,
+                color: Colors.grey[100],
                 child: ListView.builder(
                   itemCount: snapshot.data.length,
                   itemBuilder: (BuildContext context, int index) {

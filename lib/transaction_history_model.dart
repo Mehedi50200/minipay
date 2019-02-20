@@ -9,7 +9,7 @@ class TransactionHistoryModel {
       cancelled,
       primaryCurrency,
       convertedTo,
-      conversationRate;
+      conversionRate;
 
   TransactionHistoryModel(
     this.transactionId,
@@ -22,6 +22,6 @@ class TransactionHistoryModel {
     this.cancelled,
     this.primaryCurrency,
     this.convertedTo,
-    this.conversationRate,
+    this.conversionRate,
   );
 }
