@@ -20,6 +20,25 @@ class _PostListItem extends State<TransationTile> {
   final TransactionHistoryModel previousItem;
 
   bool state;
+  Color tTypeColor;
+
+  
+
+  void tTypeColorFunction(){
+    if (transactionHistoyModel.transactionType.toString() == "Deposit"){
+      tTypeColor =Color(0x30E65520);
+    }else if (transactionHistoyModel.transactionType.toString() == "Withdraw"){
+      tTypeColor =Color(0x3028335C);
+    }else if (transactionHistoyModel.transactionType.toString() == "Transfer"){
+      tTypeColor =Color(0x30F4A601);
+    }else if (transactionHistoyModel.transactionType.toString() == "Charge"){
+      tTypeColor =Color(0x30A7C783);
+    }else if (transactionHistoyModel.transactionType.toString() == "Refund"){
+      tTypeColor =Color(0x30629BBE);
+    }else{
+      tTypeColor =Color(0x30629BBE);
+    }
+  }
 
   _PostListItem(this.transactionHistoyModel, this.previousItem);
 
@@ -73,9 +92,14 @@ class _PostListItem extends State<TransationTile> {
                 Expanded(
                   flex: 2,
                   child: Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: tTypeColor,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
                     child: Text(
                       transactionHistoyModel.transactionType,
-                      textAlign: TextAlign.start,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
@@ -92,7 +116,7 @@ class _PostListItem extends State<TransationTile> {
                   flex: 2,
                   child: Container(
                     child: Text(
-                      transactionHistoyModel.transactionAmount + " USD",
+                      transactionHistoyModel.transactionAmount + " MYR",
                       textAlign: TextAlign.end,
                       style: TextStyle(
                           fontFamily: "AbrilFatface",
