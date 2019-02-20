@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minipay/transaction_history_model.dart';
+import 'package:minipay/transaction_history_item_detail.dart';
 import 'package:flutter/cupertino.dart';
 
 class TransationTile extends StatefulWidget {
@@ -33,9 +34,39 @@ class _PostListItem extends State<TransationTile> {
 
   @override
   Widget build(BuildContext context) {
+    
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        _isMatched()
+            ? buildDateContainer()
+            : Container(),
+        buildListItem(),
+      ],
+    );
+  }
+
+  Widget buildDateContainer() {
+    return Container(
+      height: 30,
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.only(top: 5, bottom: 5, left: 20),
+      margin: EdgeInsets.only(top: 5),
+      child: Text(
+        transactionHistoyModel.completed,
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          color: Colors.blue[700],
+          fontSize: 15,
+        ),
+      ),
+    );
+  }
+
+  Widget buildListItem(){
     Color tTypeBgColor;
     Color tTypeFColor;
-    Size screenSize = MediaQuery.of(context).size;
+
     switch (transactionHistoyModel.transactionType) {
       case "Deposit":
         tTypeBgColor = Color(0x60E65520);
@@ -61,197 +92,71 @@ class _PostListItem extends State<TransationTile> {
         tTypeBgColor = Color(0x60629BBE);
         tTypeFColor = Color(0xFF629BBE);
     }
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          isExpaned = !isExpaned;
-        });
-      },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _isMatched()
-              ? Container(
-                  height: 30,
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.only(top: 5, bottom: 5, left: 20),
-                  margin: EdgeInsets.only(top: 5),
-                  child: Text(
-                    transactionHistoyModel.completed,
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      color: Colors.blue[700],
-                      fontSize: 15,
-                    ),
-                  ),
-                )
-              : Container(),
-          AnimatedContainer(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
-            duration: Duration(milliseconds: 350),
-            margin: EdgeInsets.fromLTRB(0, 2, 0, 2),
-            curve: Curves.linear,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              
-            ),
-            height: isExpaned ? 400 : 60,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Row(
+    return Material(
+          color: Colors.white,
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        TransactionDetail(this.transactionHistoyModel)),
+              );
+            },
+            child: Container(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.grey[300]),
+                ),
+              ),
+              height: 80,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            color: tTypeBgColor,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Text(
-                            transactionHistoyModel.transactionType,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: tTypeFColor,
-                              fontFamily: "PTSerif Regular",
-                            ),
+                      Container(
+                        child: Text(
+                          "MYR " + transactionHistoyModel.transactionAmount,
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                            fontSize: 20,
                           ),
                         ),
                       ),
-                      Expanded(
-                        flex: 3,
-                        child: Container(
-                          child: Text(
-                            transactionHistoyModel.transactionAmount + " MYR",
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                              fontFamily: "PTSerif Bold",
-                              fontSize: 18,
-                            ),
-                          ),
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        margin: EdgeInsets.symmetric(vertical: 2),
+                        width: 90,
+                        decoration: BoxDecoration(
+                          color: tTypeBgColor,
+                          borderRadius: BorderRadius.circular(5),
                         ),
-                      ),
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                          child: Text(
-                            transactionHistoyModel.transactionState,
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              fontFamily: "PTSerif Italic",
-                              fontSize: 12,
-                            ),
+                        child: Text(
+                          transactionHistoyModel.transactionType,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: tTypeFColor,
                           ),
                         ),
                       ),
                     ],
                   ),
-                ),
-                isExpaned
-                    ? Expanded(
-                        flex: 6,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                padding: EdgeInsets.all(3),
-                                width: screenSize.width,
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: Colors.blue[700],
-                                      width: 1.0,
-                                    ),
-                                    top: BorderSide(
-                                      color: Colors.blue[700],
-                                      width: 1.0,
-                                    ),
-                                  ),
-                                ),
-                                child: Text(
-                                  "Details",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontFamily: "PTSerif Bold",
-                                      fontSize: 16,
-                                      color: Colors.black),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: ListTile(
-                                leading: Text("Transaction Id"),
-                                title: Text(transactionHistoyModel.transactionId
-                                    .toString()),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: ListTile(
-                                leading: Text("Transaction Method"),
-                                title: Text(
-                                    transactionHistoyModel.transactionMethod),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: ListTile(
-                                leading: Text("Created"),
-                                title: Text(transactionHistoyModel.created),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: ListTile(
-                                leading: Text("Completed"),
-                                title: Text(transactionHistoyModel.completed),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: ListTile(
-                                leading: Text("Cancelled"),
-                                title: Text(transactionHistoyModel.cancelled),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: ListTile(
-                                leading: Text("Currency"),
-                                title: Text(
-                                    transactionHistoyModel.primaryCurrency +
-                                        " > " +
-                                        transactionHistoyModel.convertedTo),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: ListTile(
-                                leading: Text("Conversition Rate"),
-                                title: Text(
-                                  transactionHistoyModel.conversionRate,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    : Container(),
-              ],
+                  Container(
+                    child: Text(
+                      transactionHistoyModel.transactionState,
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ],
-      ),
-    );
+        );
   }
-
-  // Widget buildPostTitle() {
-  //   return Row();
-  // }
 }
