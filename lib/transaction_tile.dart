@@ -3,25 +3,14 @@ import 'package:minipay/transaction_history_model.dart';
 import 'package:minipay/transaction_history_item_detail.dart';
 import 'package:flutter/cupertino.dart';
 
-class TransationTile extends StatefulWidget {
+Size screenSize;
+
+class TransationTile extends StatelessWidget {
   final TransactionHistoryModel transactionHistoyModel;
   final TransactionHistoryModel previousItem;
-
   const TransationTile(this.transactionHistoyModel, this.previousItem,
       {Key key})
       : super(key: key);
-
-  @override
-  _PostListItem createState() =>
-      _PostListItem(this.transactionHistoyModel, this.previousItem);
-}
-
-class _PostListItem extends State<TransationTile> {
-  final TransactionHistoryModel transactionHistoyModel;
-  final TransactionHistoryModel previousItem;
-  bool isExpaned = false;
-
-  _PostListItem(this.transactionHistoyModel, this.previousItem);
 
   _isMatched() {
     if (transactionHistoyModel.completed == previousItem.completed &&
@@ -34,14 +23,12 @@ class _PostListItem extends State<TransationTile> {
 
   @override
   Widget build(BuildContext context) {
-    
+    screenSize = MediaQuery.of(context).size;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        _isMatched()
-            ? buildDateContainer()
-            : Container(),
-        buildListItem(),
+        _isMatched() ? buildDateContainer() : Container(),
+        buildListItem(context),
       ],
     );
   }
@@ -49,7 +36,7 @@ class _PostListItem extends State<TransationTile> {
   Widget buildDateContainer() {
     return Container(
       height: 30,
-      width: MediaQuery.of(context).size.width,
+      width: screenSize.width,
       padding: EdgeInsets.only(top: 5, bottom: 5, left: 20),
       margin: EdgeInsets.only(top: 5),
       child: Text(
@@ -63,7 +50,7 @@ class _PostListItem extends State<TransationTile> {
     );
   }
 
-  Widget buildListItem(){
+  Widget buildListItem(BuildContext context) {
     Color tTypeBgColor;
     Color tTypeFColor;
 
@@ -93,70 +80,70 @@ class _PostListItem extends State<TransationTile> {
         tTypeFColor = Color(0xFF629BBE);
     }
     return Material(
-          color: Colors.white,
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        TransactionDetail(this.transactionHistoyModel)),
-              );
-            },
-            child: Container(
-              padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(color: Colors.grey[300]),
-                ),
-              ),
-              height: 80,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      color: Colors.white,
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    TransactionDetail(this.transactionHistoyModel)),
+          );
+        },
+        child: Container(
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(color: Colors.grey[300]),
+            ),
+          ),
+          height: 80,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        child: Text(
-                          "MYR " + transactionHistoyModel.transactionAmount,
-                          textAlign: TextAlign.end,
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.symmetric(vertical: 2),
-                        width: 90,
-                        decoration: BoxDecoration(
-                          color: tTypeBgColor,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Text(
-                          transactionHistoyModel.transactionType,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: tTypeFColor,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                   Container(
                     child: Text(
-                      transactionHistoyModel.transactionState,
-                      textAlign: TextAlign.right,
+                      "MYR " + transactionHistoyModel.transactionAmount,
+                      textAlign: TextAlign.end,
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    margin: EdgeInsets.symmetric(vertical: 2),
+                    width: 90,
+                    decoration: BoxDecoration(
+                      color: tTypeBgColor,
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                    child: Text(
+                      transactionHistoyModel.transactionType,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: tTypeFColor,
                       ),
                     ),
                   ),
                 ],
               ),
-            ),
+              Container(
+                child: Text(
+                  transactionHistoyModel.transactionState,
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
           ),
-        );
+        ),
+      ),
+    );
   }
 }
