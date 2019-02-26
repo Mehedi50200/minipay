@@ -41,6 +41,13 @@ flutter:
     - assets/transactionHistory.json
     - assets/controls.png
     - assets/controlswhite.png
+    - assets/charge.png
+    - assets/deposit.png
+    - assets/refund.png
+    - assets/transfer.png
+    - assets/withdraw.png
+
+
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

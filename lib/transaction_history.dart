@@ -120,8 +120,8 @@ class _TransactionPageState extends State<TransactionPage> {
         scaffoldKey.currentState.showBottomSheet<void>(
       (BuildContext bottomSheetContext) {
         return Container(
-          height: 350,
-          padding: EdgeInsets.all(10),
+          height: 200,
+          padding: EdgeInsets.all(20),
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(color: Colors.white, boxShadow: [
             BoxShadow(

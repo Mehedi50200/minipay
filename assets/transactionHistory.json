@@ -28,7 +28,7 @@
   {
     "transactionId":3,
     "transactionAmount": "230",
-    "transactionState": "cancelled",
+    "transactionState": "Cancelled",
     "transactionMethod": "MCASH",
     "transactionType": "Transfer",
     "created": "1 Mar 2019",
@@ -54,7 +54,7 @@
   {
     "transactionId":5,
     "transactionAmount": "100",
-    "transactionState": "Pending Remeption", 
+    "transactionState": "Pending", 
     "transactionMethod": "Balance",
     "transactionType": "Refund",
     "created": "1 Mar 2019",
@@ -106,7 +106,7 @@
   {
     "transactionId":9,
     "transactionAmount": "1000",
-    "transactionState": "cancelled",
+    "transactionState": "Cancelled",
     "transactionMethod":"Balance",
     "transactionType": "Transfer",
     "created": "1 Apr 2019",

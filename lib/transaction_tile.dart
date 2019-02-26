@@ -51,97 +51,100 @@ class TransationTile extends StatelessWidget {
   }
 
   Widget buildListItem(BuildContext context) {
-    Color tTypeBgColor;
-    Color tTypeFColor;
+    Color tStateColor;
+    AssetImage imgTransactionType;
 
     switch (transactionHistoyModel.transactionType) {
       case "Deposit":
-        tTypeBgColor = Color(0x60E65520);
-        tTypeFColor = Color(0xFFE65520);
+        imgTransactionType = AssetImage('assets/deposit.png');
         break;
       case "Withdraw":
-        tTypeBgColor = Color(0x6028335C);
-        tTypeFColor = Color(0xFF28335C);
+        imgTransactionType = AssetImage('assets/withdraw.png');
         break;
       case "Transfer":
-        tTypeBgColor = Color(0x60F4A601);
-        tTypeFColor = Color(0xFFBF8800);
+        imgTransactionType = AssetImage('assets/transfer.png');
         break;
       case "Charge":
-        tTypeBgColor = Color(0x60629BBE);
-        tTypeFColor = Color(0xFF00158E);
+        imgTransactionType = AssetImage('assets/charge.png');
         break;
       case "Refund":
-        tTypeBgColor = Color(0x60A7C783);
-        tTypeFColor = Color(0xFF00753D);
+        imgTransactionType = AssetImage('assets/refund.png');
         break;
       default:
-        tTypeBgColor = Color(0x60629BBE);
-        tTypeFColor = Color(0xFF629BBE);
+        imgTransactionType = AssetImage('assets/charge.png');
     }
-    return Material(
-      color: Colors.white,
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    TransactionDetail(this.transactionHistoyModel)),
-          );
-        },
-        child: Container(
-          padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(color: Colors.grey[300]),
+
+    switch (transactionHistoyModel.transactionState) {
+      case "Succeeded":
+        tStateColor = Colors.green;
+        break;
+      case "Pending":
+        tStateColor = Colors.blue;
+        break;
+      case "Timeout":
+        tStateColor = Colors.orange;
+        break;
+      case "Cancelled":
+        tStateColor = Colors.purpleAccent;
+        break;
+      case "Failed":
+        tStateColor = Colors.red;
+        break;
+      default:
+        tStateColor = Colors.grey;
+    }
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(
+          color: Colors.grey[200],
+          width: .5,
+        ))
+      ),
+      child: Material(
+        color: Colors.white,
+        child: InkWell(
+          //  onTap: () {},
+          child: ListTile(
+            leading: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundImage: imgTransactionType,
+                ),
+                Text(
+                  transactionHistoyModel.transactionType,
+                  //textAlign: TextAlign.end,
+                  // style: TextStyle(
+                  //   fontSize: 20,
+                  // ),
+                ),
+              ],
+            ),
+            title: Text(
+              "MYR " + transactionHistoyModel.transactionAmount,
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            subtitle: Text(
+              transactionHistoyModel.transactionState,
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                fontSize: 12,
+                color: tStateColor,
+              ),
             ),
           ),
-          height: 80,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      "MYR " + transactionHistoyModel.transactionAmount,
-                      textAlign: TextAlign.end,
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    margin: EdgeInsets.symmetric(vertical: 2),
-                    width: 90,
-                    decoration: BoxDecoration(
-                      color: tTypeBgColor,
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                    child: Text(
-                      transactionHistoyModel.transactionType,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: tTypeFColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                child: Text(
-                  transactionHistoyModel.transactionState,
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          // enabled: ,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      TransactionDetail(this.transactionHistoyModel)),
+            );
+          },
         ),
       ),
     );
