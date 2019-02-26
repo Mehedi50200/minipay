@@ -132,6 +132,7 @@ class TransationTile extends StatelessWidget {
               textAlign: TextAlign.end,
               style: TextStyle(
                 fontSize: 12,
+                fontStyle: FontStyle.italic,
                 color: tStateColor,
               ),
             ),
