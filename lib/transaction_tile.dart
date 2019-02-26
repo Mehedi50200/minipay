@@ -95,11 +95,12 @@ class TransationTile extends StatelessWidget {
     }
     return Container(
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(
+          border: Border(
+        bottom: BorderSide(
           color: Colors.grey[200],
           width: .5,
-        ))
-      ),
+        ),
+      )),
       child: Material(
         color: Colors.white,
         child: InkWell(
