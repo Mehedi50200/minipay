@@ -4,7 +4,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 
 import 'package:minipay/transaction_history_model.dart';
-import 'package:minipay/transaction_tile.dart';
+import 'package:minipay/transaction_item.dart';
 
 class TransactionPage extends StatefulWidget {
   TransactionPage({Key key, this.title}) : super(key: key);

@@ -108,6 +108,7 @@ class TransationTile extends StatelessWidget {
           child: ListTile(
             leading: Column(
               mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 CircleAvatar(
                   backgroundImage: imgTransactionType,
